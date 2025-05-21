@@ -33,11 +33,6 @@ int main()
 	al_init_ttf_addon();
 
 
-
-
-
-
-
 	al_destroy_display(Screen);
 	return 0;
 }
