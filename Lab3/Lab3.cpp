@@ -32,13 +32,24 @@ int main()
 	al_init_font_addon();
 	al_init_ttf_addon();
 
+	//font loading here
 	ALLEGRO_FONT* font24 = al_load_font("ComicSans.ttf", 24, 0);
 	eventQueue = al_create_event_queue();
 
 	al_register_event_source(eventQueue, al_get_display_event_source(Screen));
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 
+	//mouse installation & such
+	if (!al_install_mouse()) {
+		al_show_native_message_box(Screen, "Error!", "Failed to initialize the mouse!\n", 0, 0, ALLEGRO_MESSAGEBOX_ERROR);
+		return -1;
+	}
+	al_register_event_source(eventQueue, al_get_mouse_event_source());
 
+	//game loop!!
+	while (!done) {
+
+	}
 
 	al_destroy_display(Screen);
 	return 0;
