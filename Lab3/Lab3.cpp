@@ -32,6 +32,13 @@ int main()
 	al_init_font_addon();
 	al_init_ttf_addon();
 
+	ALLEGRO_FONT* font24 = al_load_font("ComicSans.ttf", 24, 0);
+	eventQueue = al_create_event_queue();
+
+	al_register_event_source(eventQueue, al_get_display_event_source(Screen));
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+
+
 
 	al_destroy_display(Screen);
 	return 0;
