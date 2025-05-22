@@ -50,23 +50,6 @@ int main()
 	//game loop!!
 	while (!byebye) {
 
-		//creates a lil UPA to move
-		al_draw_filled_circle(xCord, yCord, 40, al_map_rgb(150, 150, 150)); //body
-		al_draw_filled_circle(xCord, yCord - 5, 2, al_map_rgb(0, 0, 0)); //nose
-		al_draw_filled_circle(xCord + 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //right eye
-		al_draw_filled_circle(xCord - 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //left eye
-		al_draw_line(xCord - 40, yCord + 15, xCord + 40, yCord + 15, al_map_rgb(0, 0, 0), 3); //mouth
-		al_draw_line(xCord, yCord + 2, xCord - 10, yCord + 10, al_map_rgb(0, 0, 0), 2);
-		al_draw_line(xCord - 10, yCord + 10, xCord - 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
-		al_draw_line(xCord, yCord + 2, xCord + 10, yCord + 10, al_map_rgb(0, 0, 0), 2);
-		al_draw_line(xCord + 10, yCord + 10, xCord + 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
-		al_draw_filled_circle(xCord + 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //right ear
-		al_draw_filled_circle(xCord - 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //left ear
-		al_draw_circle(xCord + 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //right outline
-		al_draw_circle(xCord - 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //left outline
-
-		al_flip_display();
-
 		ALLEGRO_EVENT event;
 		al_wait_for_event(eventQueue, &event);
 
@@ -89,21 +72,21 @@ int main()
 				al_draw_filled_rectangle(0, 0, 200, 200, al_map_rgb(150, 150, 150));
 				al_draw_filled_rectangle(400, 400, 640, 480, al_map_rgb(0, 0, 0));
 				al_draw_textf(font24, al_map_rgb(255, 255, 255), xCord, yCord,
-					ALLEGRO_ALIGN_LEFT, "The mouse is located at = %i / %i", xCord, yCord);
+					ALLEGRO_ALIGN_LEFT, "Mouse at: %i, %i", xCord, yCord);
 				al_flip_display();
 			}
 			else if (xCord >= 400 && xCord <= 640 && yCord >= 400 && yCord <= 480) {
 				al_draw_filled_rectangle(400, 400, 640, 480, al_map_rgb(150, 0, 150));
 				al_draw_filled_rectangle(0, 0, 200, 200, al_map_rgb(0, 0, 0));
 				al_draw_textf(font24, al_map_rgb(255, 255, 255), xCord, yCord,
-					ALLEGRO_ALIGN_LEFT, "The mouse is located at = %i / %i", xCord, yCord);
+					ALLEGRO_ALIGN_LEFT, "Mouse at: %i, %i", xCord, yCord);
 				al_flip_display();
 			}
 			else {
 				al_draw_filled_rectangle(0, 0, 200, 200, al_map_rgb(0, 0, 0));
 				al_draw_filled_rectangle(400, 400, 640, 480, al_map_rgb(0, 0, 0));
 				al_draw_textf(font24, al_map_rgb(255, 255, 255), xCord, yCord,
-					ALLEGRO_ALIGN_LEFT, "The mouse is located at = %i / %i", xCord, yCord);
+					ALLEGRO_ALIGN_LEFT, "Mouse at: %i, %i", xCord, yCord);
 				al_flip_display();
 			}
 			draw = false;
