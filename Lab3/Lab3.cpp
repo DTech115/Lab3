@@ -21,7 +21,7 @@ int main()
 	}
 
 	bool draw = false;
-	bool done = false;
+	bool byebye = false;
 
 	int xCord = width;
 	int yCord = height;
@@ -46,10 +46,31 @@ int main()
 	}
 	al_register_event_source(eventQueue, al_get_mouse_event_source());
 
-	//game loop!!
-	while (!done) {
 
+	//game loop!!
+	while (!byebye) {
+		ALLEGRO_EVENT event;
+		al_wait_for_event(eventQueue, &event);
+		if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+			byebye = true;
+		}
+		else if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
+			if (event.mouse.button & 1) {
+				xCord = event.mouse.x;
+				yCord = event.mouse.y;
+				draw = true;
+			}
+		}
+
+		if (draw) {
+			al_draw_textf(font24, al_map_rgb(255, 255, 255), xCord, yCord, ALLEGRO_ALIGN_LEFT, "Mouse at: %i, %i", xCord, yCord);
+			al_flip_display();
+			draw = false;
+		}
+
+		al_clear_to_color(al_map_rgb(0, 0, 0));
 	}
+
 
 	al_destroy_display(Screen);
 	return 0;
