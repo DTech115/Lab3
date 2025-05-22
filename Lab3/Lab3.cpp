@@ -46,6 +46,22 @@ int main()
 	}
 	al_register_event_source(eventQueue, al_get_mouse_event_source());
 
+	//creates a lil UPA in the center
+	al_draw_filled_circle(xCord, yCord, 40, al_map_rgb(150, 150, 150)); //body
+	al_draw_filled_circle(xCord, yCord - 5, 2, al_map_rgb(0, 0, 0)); //nose
+	al_draw_filled_circle(xCord + 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //right eye
+	al_draw_filled_circle(xCord - 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //left eye
+	al_draw_line(xCord - 40, yCord + 15, xCord + 40, yCord + 15, al_map_rgb(0, 0, 0), 3); //line
+	al_draw_line(xCord, yCord + 2, xCord - 10, yCord + 10, al_map_rgb(0, 0, 0), 2); //mouth
+	al_draw_line(xCord - 10, yCord + 10, xCord - 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
+	al_draw_line(xCord, yCord + 2, xCord + 10, yCord + 10, al_map_rgb(0, 0, 0), 2);
+	al_draw_line(xCord + 10, yCord + 10, xCord + 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
+	al_draw_filled_circle(xCord + 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //right ear
+	al_draw_filled_circle(xCord - 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //left ear
+	al_draw_circle(xCord + 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //right outline
+	al_draw_circle(xCord - 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //left outline
+
+	al_flip_display();
 
 	//game loop!!
 	while (!byebye) {
@@ -68,11 +84,27 @@ int main()
 
 		if (draw) {
 			
-			if (xCord <= 200 && xCord >= 0 && yCord >= 0 && yCord <= 200) {
-				al_draw_filled_rectangle(0, 0, 200, 200, al_map_rgb(150, 150, 150));
-				al_draw_filled_rectangle(400, 400, 640, 480, al_map_rgb(0, 0, 0));
-				al_draw_textf(font24, al_map_rgb(255, 255, 255), xCord, yCord,
+			//if clicking on the top left, change the background/text color & show coords
+			if (xCord <= width/2 && xCord >= 0 && yCord >= 0 && yCord <= height/2) {
+				al_clear_to_color(al_map_rgb(255, 255, 255));
+				al_draw_textf(font24, al_map_rgb(0, 0, 0), xCord, yCord,
 					ALLEGRO_ALIGN_LEFT, "Mouse at: %i, %i", xCord, yCord);
+				
+				//moves the UPA to wherever the cursor clicks
+				al_draw_filled_circle(xCord, yCord, 40, al_map_rgb(150, 150, 150)); //body
+				al_draw_filled_circle(xCord, yCord - 5, 2, al_map_rgb(0, 0, 0)); //nose
+				al_draw_filled_circle(xCord + 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //right eye
+				al_draw_filled_circle(xCord - 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //left eye
+				al_draw_line(xCord - 40, yCord + 15, xCord + 40, yCord + 15, al_map_rgb(0, 0, 0), 3); //line
+				al_draw_line(xCord, yCord + 2, xCord - 10, yCord + 10, al_map_rgb(0, 0, 0), 2); //mouth
+				al_draw_line(xCord - 10, yCord + 10, xCord - 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
+				al_draw_line(xCord, yCord + 2, xCord + 10, yCord + 10, al_map_rgb(0, 0, 0), 2);
+				al_draw_line(xCord + 10, yCord + 10, xCord + 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
+				al_draw_filled_circle(xCord + 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //right ear
+				al_draw_filled_circle(xCord - 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //left ear
+				al_draw_circle(xCord + 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //right outline
+				al_draw_circle(xCord - 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //left outline
+
 				al_flip_display();
 			}
 			else if (xCord >= 400 && xCord <= 640 && yCord >= 400 && yCord <= 480) {
@@ -80,6 +112,20 @@ int main()
 				al_draw_filled_rectangle(0, 0, 200, 200, al_map_rgb(0, 0, 0));
 				al_draw_textf(font24, al_map_rgb(255, 255, 255), xCord, yCord,
 					ALLEGRO_ALIGN_LEFT, "Mouse at: %i, %i", xCord, yCord);
+				//moves the UPA to wherever the cursor clicks
+				al_draw_filled_circle(xCord, yCord, 40, al_map_rgb(150, 150, 150)); //body
+				al_draw_filled_circle(xCord, yCord - 5, 2, al_map_rgb(0, 0, 0)); //nose
+				al_draw_filled_circle(xCord + 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //right eye
+				al_draw_filled_circle(xCord - 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //left eye
+				al_draw_line(xCord - 40, yCord + 15, xCord + 40, yCord + 15, al_map_rgb(0, 0, 0), 3); //line
+				al_draw_line(xCord, yCord + 2, xCord - 10, yCord + 10, al_map_rgb(0, 0, 0), 2); //mouth
+				al_draw_line(xCord - 10, yCord + 10, xCord - 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
+				al_draw_line(xCord, yCord + 2, xCord + 10, yCord + 10, al_map_rgb(0, 0, 0), 2);
+				al_draw_line(xCord + 10, yCord + 10, xCord + 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
+				al_draw_filled_circle(xCord + 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //right ear
+				al_draw_filled_circle(xCord - 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //left ear
+				al_draw_circle(xCord + 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //right outline
+				al_draw_circle(xCord - 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //left outline
 				al_flip_display();
 			}
 			else {
@@ -87,9 +133,24 @@ int main()
 				al_draw_filled_rectangle(400, 400, 640, 480, al_map_rgb(0, 0, 0));
 				al_draw_textf(font24, al_map_rgb(255, 255, 255), xCord, yCord,
 					ALLEGRO_ALIGN_LEFT, "Mouse at: %i, %i", xCord, yCord);
+				//moves the UPA to wherever the cursor clicks
+				al_draw_filled_circle(xCord, yCord, 40, al_map_rgb(150, 150, 150)); //body
+				al_draw_filled_circle(xCord, yCord - 5, 2, al_map_rgb(0, 0, 0)); //nose
+				al_draw_filled_circle(xCord + 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //right eye
+				al_draw_filled_circle(xCord - 25, yCord - 5, 2, al_map_rgb(0, 0, 0)); //left eye
+				al_draw_line(xCord - 40, yCord + 15, xCord + 40, yCord + 15, al_map_rgb(0, 0, 0), 3); //line
+				al_draw_line(xCord, yCord + 2, xCord - 10, yCord + 10, al_map_rgb(0, 0, 0), 2); //mouth
+				al_draw_line(xCord - 10, yCord + 10, xCord - 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
+				al_draw_line(xCord, yCord + 2, xCord + 10, yCord + 10, al_map_rgb(0, 0, 0), 2);
+				al_draw_line(xCord + 10, yCord + 10, xCord + 20, yCord + 2, al_map_rgb(0, 0, 0), 2);
+				al_draw_filled_circle(xCord + 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //right ear
+				al_draw_filled_circle(xCord - 30, yCord - 30, 15, al_map_rgb(150, 150, 150)); //left ear
+				al_draw_circle(xCord + 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //right outline
+				al_draw_circle(xCord - 30, yCord - 30, 15, al_map_rgb(0, 0, 0), 5); //left outline
 				al_flip_display();
 			}
 			draw = false;
+
 		}
 
 		al_clear_to_color(al_map_rgb(0, 0, 0));
